@@ -178,6 +178,7 @@
     "gate:evolution": "node scripts/evolution-gate.mjs",
     "evolution:propose": "node scripts/evolution-propose.mjs",
     "pack:openclaw": "node scripts/pack-openclaw-skill.mjs",
+    "publish:clawhub": "node scripts/publish-clawhub.mjs",
     "pack:release": "node scripts/pack-release.mjs",
     "pack:release:all": "node scripts/pack-release.mjs --all",
     "clean:dist": "node scripts/clean-dist.mjs",

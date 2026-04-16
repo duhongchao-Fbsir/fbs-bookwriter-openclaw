@@ -1,6 +1,7 @@
 ---
 name: fbs_bookwriter
 description: "FBS 福帮手长文档写作：书/手册/白皮书/长篇报道全流程；Node 脚本驱动 intake、会话恢复、S/P/C/B 质检与 MD/HTML 交付。用户提及写书、出书、章节、大纲、素材、质检、导出、扩写、退出保存时启用。"
+homepage: https://clawhub.ai/skills/fbs-bookwriter
 metadata:
   openclaw:
     skillKey: fbs_bookwriter
@@ -21,7 +22,9 @@ metadata:
 
 ## 安装（OpenClaw）
 
-1. 将打包解压后的技能根目录（文件夹名建议 **`fbs_bookwriter`**，与 `name` 一致）放到任一扫描路径，例如：
+**从 ClawHub 安装（推荐，需已发布）：** 在已登录环境下执行 `openclaw skills install fbs-bookwriter` 或 `npx clawhub@latest install fbs-bookwriter`，再于技能根执行 `npm install`。列表与版本见 [ClawHub 上的 fbs-bookwriter](https://clawhub.ai/skills/fbs-bookwriter)。
+
+1. 将技能根目录（文件夹名建议 **`fbs_bookwriter`**，与 `name` 一致）放到任一扫描路径，例如：
    - 工作区：`./skills/fbs_bookwriter/`（优先级最高）
    - 或 `~/.openclaw/workspace/skills/fbs_bookwriter/`
    - 或 `~/.openclaw/skills/fbs_bookwriter/`
