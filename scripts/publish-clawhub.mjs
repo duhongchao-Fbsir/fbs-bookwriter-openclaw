@@ -15,15 +15,23 @@ import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const skillRoot = process.env.FBS_CLAWHUB_SKILL_ROOT
-  ? path.resolve(process.env.FBS_CLAWHUB_SKILL_ROOT)
-  : path.join(ROOT, 'openclaw-github-publish');
 
-if (!fs.existsSync(path.join(skillRoot, 'SKILL.md'))) {
+let skillRoot = process.env.FBS_CLAWHUB_SKILL_ROOT
+  ? path.resolve(process.env.FBS_CLAWHUB_SKILL_ROOT)
+  : null;
+
+if (!skillRoot) {
+  const devMirror = path.join(ROOT, 'openclaw-github-publish');
+  if (fs.existsSync(path.join(devMirror, 'SKILL.md'))) {
+    skillRoot = devMirror;
+  } else if (fs.existsSync(path.join(ROOT, 'SKILL.md'))) {
+    skillRoot = ROOT;
+  }
+}
+
+if (!skillRoot || !fs.existsSync(path.join(skillRoot, 'SKILL.md'))) {
   console.error(
-    '[publish-clawhub] 未找到 SKILL.md：',
-    skillRoot,
-    '\n请先运行 npm run pack:openclaw，并保证 openclaw-github-publish 已同步；或设置 FBS_CLAWHUB_SKILL_ROOT。',
+    '[publish-clawhub] 未找到 SKILL.md。主仓请先 npm run pack:openclaw 并同步 openclaw-github-publish；或设置 FBS_CLAWHUB_SKILL_ROOT=技能根目录。',
   );
   process.exit(1);
 }
